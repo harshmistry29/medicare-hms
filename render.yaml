@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: medicare-hms-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        value: mongodb+srv://harshmistry662_db_user:harsh291204@cluster1.u8d6u1t.mongodb.net/medicare_hms?retryWrites=true&w=majority&appName=Cluster1
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: CLIENT_URL
+        value: https://medicare-hms.netlify.app
+      - key: TAX_PERCENTAGE
+        value: "5.0"
