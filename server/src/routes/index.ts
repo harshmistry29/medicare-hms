@@ -1,0 +1,44 @@
+import { Router } from 'express';
+import authRoutes from './authRoutes';
+import patientRoutes from './patientRoutes';
+import doctorRoutes from './doctorRoutes';
+import departmentRoutes from './departmentRoutes';
+import appointmentRoutes from './appointmentRoutes';
+import consultationRoutes from './consultationRoutes';
+import prescriptionRoutes from './prescriptionRoutes';
+import pharmacyRoutes from './pharmacyRoutes';
+import labRoutes from './labRoutes';
+import bedRoutes from './bedRoutes';
+import admissionRoutes from './admissionRoutes';
+import billingRoutes from './billingRoutes';
+import emergencyRoutes from './emergencyRoutes';
+import reportRoutes from './reportRoutes';
+import notificationRoutes from './notificationRoutes';
+import auditRoutes from './auditRoutes';
+import searchRoutes from './searchRoutes';
+import settingsRoutes from './settingsRoutes';
+import aiRoutes from './aiRoutes';
+
+const router = Router();
+
+router.use('/auth', authRoutes);
+router.use('/patients', patientRoutes);
+router.use('/doctors', doctorRoutes);
+router.use('/departments', departmentRoutes);
+router.use('/appointments', appointmentRoutes);
+router.use('/consultations', consultationRoutes);
+router.use('/prescriptions', prescriptionRoutes);
+router.use('/pharmacy', pharmacyRoutes);
+router.use('/laboratory', labRoutes);
+router.use('/beds', bedRoutes);
+router.use('/admissions', admissionRoutes);
+router.use('/billing', billingRoutes);
+router.use('/emergency', emergencyRoutes);
+router.use('/reports', reportRoutes);
+router.use('/notifications', notificationRoutes);
+router.use('/audit-logs', auditRoutes);
+router.use('/search', searchRoutes);
+router.use('/settings', settingsRoutes);
+router.use('/ai', aiRoutes);
+
+export default router;
