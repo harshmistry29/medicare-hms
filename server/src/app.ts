@@ -15,7 +15,7 @@ export const createApp = (): Express => {
   }));
 
   app.use(cors({
-    origin: '*',
+    origin: (origin, callback) => callback(null, true),
     credentials: true,
   }));
 
