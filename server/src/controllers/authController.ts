@@ -20,11 +20,12 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
       throw new AppError('Invalid email or password', 401);
     }
 
-    if (user.password) {
-      const isMatch = await bcrypt.compare(password, user.password);
-      if (!isMatch) {
-        throw new AppError('Invalid email or password', 401);
-      }
+    if (!user.password) {
+      throw new AppError('Invalid email or password', 401);
+    }
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      throw new AppError('Invalid email or password', 401);
     }
 
     const token = jwt.sign(
@@ -80,6 +81,15 @@ export const register = async (req: Request, res: Response, next: NextFunction):
 
     if (!name || !email || !password) {
       throw new AppError('Name, email, and password are required', 400);
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) {
+      throw new AppError('Please provide a valid email address format', 400);
+    }
+
+    if (password.length < 8) {
+      throw new AppError('Password must be at least 8 characters long', 400);
     }
 
     const existingUser = db.getUserByEmail(email);
